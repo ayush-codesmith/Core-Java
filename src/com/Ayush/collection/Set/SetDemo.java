@@ -1,9 +1,6 @@
 package com.Ayush.collection.Set;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 public class SetDemo {
     public static void main(String[] args) {
@@ -20,7 +17,15 @@ public class SetDemo {
 //        }
 
         // In LinkedHashSet it will maintain insertions order
-        Set<Integer> set = new LinkedHashSet<>();
+//        Set<Integer> set = new LinkedHashSet<>();
+//        set.add(2);
+//        set.add(6);
+//        set.add(9);
+//        set.add(1);
+//        System.out.println(set);
+        // TreeSet
+
+        Set<Integer> set = new TreeSet<>();
         set.add(2);
         set.add(6);
         set.add(9);
