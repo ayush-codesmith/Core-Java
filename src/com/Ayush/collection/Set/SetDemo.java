@@ -24,13 +24,16 @@ public class SetDemo {
 //        set.add(1);
 //        System.out.println(set);
         // TreeSet
+//
+//        Set<Integer> set = new TreeSet<>();
+//        set.add(2);
+//        set.add(6);
+//        set.add(9);
+//        set.add(1);
+//        System.out.println(set);
+        SortedSet<Integer> set = new TreeSet<>();
+        // just learn it will print natural order with ascending orders
 
-        Set<Integer> set = new TreeSet<>();
-        set.add(2);
-        set.add(6);
-        set.add(9);
-        set.add(1);
-        System.out.println(set);
 
 
 
