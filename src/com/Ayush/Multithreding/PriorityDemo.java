@@ -25,20 +25,26 @@ public class PriorityDemo extends Thread {
 
     @Override
     public void run() {
-        try {
-            Thread.sleep(1000);
-            System.out.println("My Name Is Ayush");
-        } catch (InterruptedException e) {
-            System.out.println("Exception "+e);
+        for (int i = 0; i < 5; i++) {
+            try {
+                Thread.sleep(1000);
+                System.out.println(Thread.currentThread().getName());
+                Thread.yield();
+            } catch (InterruptedException e) {
+                System.out.println("Exception " + e);
+            }
         }
     }
 
     public static void main(String[] args) {
 
         PriorityDemo p1 = new PriorityDemo("Ayush");
+        PriorityDemo p2 = new PriorityDemo("Karan");
         p1.setPriority(Thread.MAX_PRIORITY);
         p1.start();
-        p1.interrupt();
+        p2.start();
+        //p1.interrupt();
+
 
 
     }
