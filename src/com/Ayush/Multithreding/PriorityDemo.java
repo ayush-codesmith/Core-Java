@@ -2,6 +2,10 @@ package com.Ayush.Multithreding;
 
 public class PriorityDemo extends Thread {
 
+    // If want to change Thread Name so create a constructor
+   public PriorityDemo(String name){
+       super(name);
+   }
 
     @Override
     public void run() {
@@ -17,7 +21,8 @@ public class PriorityDemo extends Thread {
 
     public static void main(String[] args) {
 
-        PriorityDemo p1 = new PriorityDemo();
+        PriorityDemo p1 = new PriorityDemo("Ayush");
+        p1.setPriority(Thread.MAX_PRIORITY);
         p1.start();
 
 
