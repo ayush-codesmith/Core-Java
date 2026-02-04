@@ -1,3 +1,6 @@
 .idea/
 out/
 *.iml
+
+main.java
+generics_in_Java/
