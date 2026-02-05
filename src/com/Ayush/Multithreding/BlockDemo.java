@@ -5,8 +5,9 @@ public class BlockDemo {
 
     public void inc(){
         synchronized (this){c++;}
+       // c++;
     }
-    private int get(){
+    public int get(){
         return c;
     }
 }
