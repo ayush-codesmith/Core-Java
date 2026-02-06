@@ -13,16 +13,17 @@ class BankAccountED{
     public void withdraw(int ammount){
         System.out.println(Thread.currentThread().getName()+" Attempting to withdraw "+ammount);
       try {
+
           if (lock.tryLock()){
               if (balance>=ammount){
                   try {
 
                       System.out.println(Thread.currentThread().getName() + " Thread Attempting to withdraw " + ammount);
-                      Thread.sleep(1000);
+                      Thread.sleep(3000);
                       balance -= ammount;
                       System.out.println(Thread.currentThread().getName() + " Successful " + balance);
                   }catch (Exception e){
-                      //
+                      Thread.currentThread().interrupt();
                   }finally {
                       lock.unlock();
                   }
@@ -35,7 +36,7 @@ class BankAccountED{
           }
 
       }catch (Exception e){
-          // nothing
+          Thread.currentThread().interrupt();
       }
       }
 }
