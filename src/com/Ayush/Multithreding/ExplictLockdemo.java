@@ -2,7 +2,6 @@ package com.Ayush.Multithreding;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-
 class BankAccountED{
     private int balance = 1000;
 
