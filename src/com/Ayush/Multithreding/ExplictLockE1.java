@@ -2,6 +2,7 @@ package com.Ayush.Multithreding;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+//import java.util.concurrent.TimeUnit;
 
 class Ex{
 
@@ -16,8 +17,8 @@ class Ex{
                    try {
                    System.out.println(Thread.currentThread().getName()+" Operation ongoing withdraw "+amount);
                    balance-=amount;
-                   Thread.sleep(3000);
-                   System.out.println("Balance is now "+balance+" After withdraw "+amount);
+                   Thread.sleep(1000);
+                   System.out.println(Thread.currentThread().getName()+" Balance is now "+balance+" After withdraw "+amount);
                    }catch (Exception e){
                        Thread.currentThread().interrupt();
                    }finally {
