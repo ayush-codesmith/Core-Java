@@ -7,4 +7,9 @@ class RL{
 
 }
 public class ReentrantLockDemo {
+    public static void main(String[] args) {
+        System.out.println("Today I take break");
+    }
+
 }
+
