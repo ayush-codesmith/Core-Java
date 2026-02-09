@@ -4,6 +4,7 @@ class SharedResource{
         synchronized (this){
             for (int i=1;i<=10;i++){
                 System.out.println(n*i);
+                notify();
                 if (i==5){
                     System.out.println(Thread.currentThread().getName()+" Waiting....");
                     try {
