@@ -4,5 +4,5 @@ out/
 
 main.java
 generics_in_Java/
-src/com/Ayush/genericsPractice/ClassDemo.class
-src/com/Ayush/genericsPractice/ImlClassDemo.class
+src/com/Ayush/genericsPractice/Terminal/ClassDemo.class
+src/com/Ayush/genericsPractice/Terminal/ImlClassDemo.class
