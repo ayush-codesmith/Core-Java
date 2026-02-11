@@ -1,6 +1,7 @@
 package com.Ayush.genericsPractice;
+public interface InterfaceDemo<T extends Number> {
 
-public interface InterfaceDemo<T> {
-    void  print();
-    T add();
+   T add(T a, T b);
+
+
 }

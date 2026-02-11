@@ -1,13 +1,29 @@
 package com.Ayush.genericsPractice;
 
-public class ImlInterfaceDemo implements InterfaceDemo<String>{
+public class ImlInterfaceDemo implements InterfaceDemo<Integer>{
     @Override
-    public void print() {
-
+    public Integer add(Integer a, Integer b) {
+        return a + b;
     }
 
-    @Override
-    public String add() {
-        return null;
+    public static void main(String[] args) {
+    ImlInterfaceDemo obj = new ImlInterfaceDemo();
+        System.out.println(obj.add(1,1));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
