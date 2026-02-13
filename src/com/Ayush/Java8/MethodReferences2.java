@@ -28,7 +28,10 @@ public class MethodReferences2 {
 
         //list.forEach(n-> System.out.println(n.toUpperCase(Locale.ROOT)));
         // below we create object of this class using Functional Interface
-        Supplier<MethodReferences2> obj = MethodReferences2::new;
-        obj.get();
+//        Supplier<MethodReferences2> obj = MethodReferences2::new;
+//        obj.get();
+        list.sort(null);
+        System.out.println(list);
+
     }
 }
