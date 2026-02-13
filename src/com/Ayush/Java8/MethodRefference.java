@@ -10,7 +10,11 @@ public class MethodRefference {
         Integer[] arr ={1,2,3,4,5,6,7,8};
        // Arrays.stream(arr).forEach(n-> System.out.println(n));
         //Arrays.stream(arr).forEach(MethodRefference::print);
-       Arrays.stream(arr).forEach(s->MethodRefference.print(s));
+       //Arrays.stream(arr).forEach(s->MethodRefference.print(s));
+     //   Arrays.stream(arr).forEach(n-> System.out.println(n));
+        Arrays.stream(arr).forEach(n->MethodRefference.print(n));
+        System.out.println();
+        Arrays.stream(arr).forEach(MethodRefference::print);
 
     }
 }
