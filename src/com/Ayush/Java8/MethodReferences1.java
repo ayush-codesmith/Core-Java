@@ -17,7 +17,9 @@ public class MethodReferences1 {
         List<Integer> list = Arrays.asList(1,2,3,4,5);
         //list.forEach(MethodReferences1::squar); //
        // list.forEach(s->MethodReferences1.squar(s));
-        list.forEach(methodReferences1::squarN);
+        //list.forEach(methodReferences1::squarN);
+        //important logic we can use method reference instead of the lambda expressions
+        list.forEach(System.out::println);
 
     }
 }
