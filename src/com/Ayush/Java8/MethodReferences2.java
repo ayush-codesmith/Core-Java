@@ -15,9 +15,12 @@ public class MethodReferences2 {
 //        list.stream()
 //                .map(String::toUpperCase)
 //                .forEach(System.out::println);
-        ListIterator<String> stringListIterator = list.listIterator();
-       while (stringListIterator.hasNext()){
-           System.out.println(stringListIterator.next().toUpperCase(Locale.ROOT));
-       }
+//        ListIterator<String> stringListIterator = list.listIterator();
+//       while (stringListIterator.hasNext()){
+//           System.out.println(stringListIterator.next().toUpperCase(Locale.ROOT));
+
+       //}
+
+        list.forEach(n-> System.out.println(n.toUpperCase(Locale.ROOT)));
     }
 }
