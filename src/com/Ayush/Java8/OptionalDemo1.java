@@ -14,6 +14,9 @@ public class OptionalDemo1 {
         //it will throw run time Error NPE
 
         String[] Word = new String[10];
+        // if I assign a value at index 5
+        word[5]="Ayush";
+        // if statement body will get run.
         Optional<String > optional = Optional.ofNullable(word[5]);
         if (optional.isPresent()){
             String wordprint1 = word[5].toUpperCase();
