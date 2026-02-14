@@ -1,5 +1,6 @@
 package com.Ayush.Java8;
 
+import java.io.FilterOutputStream;
 import java.util.Optional;
 
 public class OptionalDemo1 {
@@ -15,14 +16,23 @@ public class OptionalDemo1 {
 
         String[] Word = new String[10];
         // if I assign a value at index 5
-        word[5]="Ayush";
+        //word[5]="Ayush is trying hard to get proffessional developre not only developer but someone who can run an own It company";
         // if statement body will get run.
-        Optional<String > optional = Optional.ofNullable(word[5]);
-        if (optional.isPresent()){
-            String wordprint1 = word[5].toUpperCase();
-            System.out.println(wordprint1);
-        }else {
-            System.out.println("The Array is holding null value at that index");
-        }
+//        Optional<String > optional = Optional.ofNullable(word[5]);
+//        if (optional.isPresent()){
+//            String wordprint1 = word[5].toUpperCase();
+//            System.out.println(wordprint1);
+//        }else {
+//            System.out.println("The Array is holding null value at that index");
+//
+//        }
+
+//       Optional<String> optional1 = Optional.empty();
+//        System.out.println(optional1 );
+
+        Optional<String> optional2 = Optional.of(word[5]);
+        System.out.println(optional2);
+
+
     }
 }
