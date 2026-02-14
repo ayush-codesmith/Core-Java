@@ -15,6 +15,7 @@ public class OptionalDemo1 {
         //it will throw run time Error NPE
 
         String[] Word = new String[10];
+        word[5]="Ayush";
         // if I assign a value at index 5
         //word[5]="Ayush is trying hard to get proffessional developre not only developer but someone who can run an own It company";
         // if statement body will get run.
@@ -30,8 +31,13 @@ public class OptionalDemo1 {
 //       Optional<String> optional1 = Optional.empty();
 //        System.out.println(optional1 );
 
-        Optional<String> optional2 = Optional.of(word[5]);
-        System.out.println(optional2);
+//        Optional<String> optional2 = Optional.of(word[5]);
+//        System.out.println(optional2);
+
+        Optional<String> value = Optional.of(word[5]);
+        System.out.println(value.get());
+        System.out.println(value.hashCode());
+        System.out.println(value.isPresent());
 
 
     }
