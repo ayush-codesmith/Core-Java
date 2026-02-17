@@ -12,19 +12,20 @@ public class Practice1 {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        try {
+        try (
             Connection connection = DriverManager.getConnection(url,user,password);
             Statement statement = connection.createStatement();
-            String query ="SELECT * FROM users";
-            ResultSet resultSet = statement.executeQuery(query);
+            ResultSet resultSet = statement.executeQuery( "SELECT * FROM users")
+            ){
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 String surname = resultSet.getString("surname");
-                System.out.println("ID :" +id);
-                System.out.println("Name :"+name);
-                System.out.println("Surname :"+surname);
+                System.out.println("ID :" + id);
+                System.out.println("Name :" + name);
+                System.out.println("Surname :" + surname);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
