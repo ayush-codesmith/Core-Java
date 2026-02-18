@@ -15,10 +15,12 @@ public class Practice1 {
         try {
             Connection connection = DriverManager.getConnection(url,user,password);
             Statement statement = connection.createStatement();
-            String query = String.format("INSERT INTO users (id , name , surname) VALUES(%o,'%s','%s')",9,"Arman","Patil");
+            //String query = String.format("INSERT INTO users (id , name , surname) VALUES(%o,'%s','%s')",9,"Arman","Patil");
+            //String query = String.format("UPDATE users set surname = '%s' WHERE id= %o","Khan",1);
+            String query = "DELETE FROM users WHERE id=1";
             int rowAffected = statement.executeUpdate(query);
             if (rowAffected>0){
-                System.out.println("Data Added");
+                System.out.println("Data Delete");
             }else {
                 System.out.println("Fail !!!!");
             }
