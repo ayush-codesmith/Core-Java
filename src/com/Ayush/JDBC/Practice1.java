@@ -1,9 +1,10 @@
 package com.Ayush.JDBC;
 
 import java.sql.*;
+import java.util.Scanner;
 
 public class Practice1 {
-    private static final String  url="jdbc:mysql://127.0.0.1:3306/practice1";
+    private static final String  url="jdbc:mysql://127.0.0.1:3306/practice2";
     private static final String  user="root";
     private static final String  password="Java@80100";
     public static void main(String[] args) {
@@ -14,16 +15,50 @@ public class Practice1 {
         }
         try {
             Connection connection = DriverManager.getConnection(url,user,password);
-
-            String query = "SELECT name , surname FROM users WHERE id=?";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1,2);
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
-                System.out.println("Name with Surname");
-                System.out.println(resultSet.getString("name")+" "+resultSet.getString("surname"));
+            Statement statement = connection.createStatement();
+            Scanner sc = new Scanner(System.in);
+            while (true) {
+                System.out.println("You Want to Enter Entries Or see Database (E/S) :");
+                String enter = sc.nextLine();
+                if (enter.toUpperCase().equals("E")) {
+                    System.out.print("Enter Name :");
+                    String name = sc.nextLine();
+                    System.out.print("Enter Subject Name :");
+                    String subject = sc.nextLine();
+                    System.out.print("Enter Marks :");
+                    int mark = sc.nextInt();
+                    String query = String.format("INSERT INTO users (name,subject,marks) VALUES ('%s','%s',%d)", name, subject, mark);
+                    statement.addBatch(query);
+                    System.out.print("Want to Add more Data (Y/N) :");
+                    String choise = sc.next();
+                    sc.nextLine();
+                    if (choise.toUpperCase().equals("N")) {
+                        break;
+                    }
+                }else if (enter.toUpperCase().equals("S")){
+                    break;
+                }else {
+                    System.out.println("Enter Valid Operation !!!");
+                }
             }
+            // storing operation
+            int[] batch = statement.executeBatch();
+            // Validation checks condition ..
+            for (int i=0;i< batch.length;i++){
+                if (batch[i]==0){
+                    System.out.println("Query "+i+" Is Failed");
+                }
+            }
+
+            // Retrieve Data from the database.
+            String query2 = "SELECT * FROM users";
+            ResultSet resultSet = statement.executeQuery(query2);
+            while (resultSet.next()){
+                System.out.println("Name :"+resultSet.getString("name"));
+                System.out.println("Subject :"+resultSet.getString("subject"));
+                System.out.println("Mark :"+resultSet.getInt("marks"));
+            }
+            System.out.println("Operation Done !!!");
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
