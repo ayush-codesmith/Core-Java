@@ -14,26 +14,22 @@ public class Practice1 {
         }
         try {
             Connection connection = DriverManager.getConnection(url,user,password);
-            Statement statement = connection.createStatement();
+           // Statement statement = connection.createStatement();
+            String query = "INSERT INTO users VALUES(?,?,?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
             //String query = String.format("INSERT INTO users (id , name , surname) VALUES(%o,'%s','%s')",9,"Arman","Patil");
             //String query = String.format("UPDATE users set surname = '%s' WHERE id= %o","Khan",1);
-            String query = "DELETE FROM users WHERE id=1";
-            int rowAffected = statement.executeUpdate(query);
+            preparedStatement.setInt(1,23);
+            preparedStatement.setString(2,"Suraj");
+            preparedStatement.setString(3,"Rajput");
+            int rowAffected = preparedStatement.executeUpdate();
+
             if (rowAffected>0){
-                System.out.println("Data Delete");
+                System.out.println("Data INSERT");
             }else {
                 System.out.println("Fail !!!!");
             }
-            String query1 ="SELECT * FROM users";
-            ResultSet resultSet = statement.executeQuery(query1);
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                String surname = resultSet.getString("surname");
-                System.out.println("ID :" + id);
-                System.out.println("Name :" + name);
-                System.out.println("Surname :" + surname);
-            }
+
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
