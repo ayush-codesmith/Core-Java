@@ -12,11 +12,18 @@ public class Practice1 {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        try (
+        try {
             Connection connection = DriverManager.getConnection(url,user,password);
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery( "SELECT * FROM users")
-            ){
+            String query = String.format("INSERT INTO users (id , name , surname) VALUES(%o,'%s','%s')",9,"Arman","Patil");
+            int rowAffected = statement.executeUpdate(query);
+            if (rowAffected>0){
+                System.out.println("Data Added");
+            }else {
+                System.out.println("Fail !!!!");
+            }
+            String query1 ="SELECT * FROM users";
+            ResultSet resultSet = statement.executeQuery(query1);
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
@@ -27,7 +34,7 @@ public class Practice1 {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
     }
