@@ -21,19 +21,21 @@ public class Practice1 {
                 System.out.println("You Want to Enter Entries Or see Database (E/S) :");
                 String enter = sc.nextLine();
                 if (enter.toUpperCase().equals("E")) {
-                    System.out.print("Enter Name :");
-                    String name = sc.nextLine();
-                    System.out.print("Enter Subject Name :");
-                    String subject = sc.nextLine();
-                    System.out.print("Enter Marks :");
-                    int mark = sc.nextInt();
-                    String query = String.format("INSERT INTO users (name,subject,marks) VALUES ('%s','%s',%d)", name, subject, mark);
-                    statement.addBatch(query);
-                    System.out.print("Want to Add more Data (Y/N) :");
-                    String choise = sc.next();
-                    sc.nextLine();
-                    if (choise.toUpperCase().equals("N")) {
-                        break;
+                    while (true) {
+                        System.out.print("Enter Name :");
+                        String name = sc.nextLine();
+                        System.out.print("Enter Subject Name :");
+                        String subject = sc.nextLine();
+                        System.out.print("Enter Marks :");
+                        int mark = sc.nextInt();
+                        String query = String.format("INSERT INTO users (name,subject,marks) VALUES ('%s','%s',%d)", name, subject, mark);
+                        statement.addBatch(query);
+                        System.out.print("Want to Add more Data (Y/N) :");
+                        String choise = sc.next();
+                        sc.nextLine();
+                        if (choise.toUpperCase().equals("N")) {
+                            break;
+                        }
                     }
                 }else if (enter.toUpperCase().equals("S")){
                     break;
