@@ -14,22 +14,16 @@ public class Practice1 {
         }
         try {
             Connection connection = DriverManager.getConnection(url,user,password);
-           // Statement statement = connection.createStatement();
-            String query = "INSERT INTO users VALUES(?,?,?)";
+
+            String query = "SELECT name , surname FROM users WHERE id=?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            //String query = String.format("INSERT INTO users (id , name , surname) VALUES(%o,'%s','%s')",9,"Arman","Patil");
-            //String query = String.format("UPDATE users set surname = '%s' WHERE id= %o","Khan",1);
-            preparedStatement.setInt(1,23);
-            preparedStatement.setString(2,"Suraj");
-            preparedStatement.setString(3,"Rajput");
-            int rowAffected = preparedStatement.executeUpdate();
+            preparedStatement.setInt(1,2);
 
-            if (rowAffected>0){
-                System.out.println("Data INSERT");
-            }else {
-                System.out.println("Fail !!!!");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                System.out.println("Name with Surname");
+                System.out.println(resultSet.getString("name")+" "+resultSet.getString("surname"));
             }
-
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
