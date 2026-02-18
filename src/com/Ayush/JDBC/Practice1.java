@@ -15,7 +15,8 @@ public class Practice1 {
         }
         try {
             Connection connection = DriverManager.getConnection(url,user,password);
-            Statement statement = connection.createStatement();
+            String query = "INSERT INTO users (name,subject,marks) VALUES (?,?,?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
             Scanner sc = new Scanner(System.in);
             while (true) {
                 System.out.println("You Want to Enter Entries Or see Database (E/S) :");
@@ -28,8 +29,10 @@ public class Practice1 {
                         String subject = sc.nextLine();
                         System.out.print("Enter Marks :");
                         int mark = sc.nextInt();
-                        String query = String.format("INSERT INTO users (name,subject,marks) VALUES ('%s','%s',%d)", name, subject, mark);
-                        statement.addBatch(query);
+                        preparedStatement.setString(1,name);
+                        preparedStatement.setString(2,subject);
+                        preparedStatement.setInt(3,mark);
+                        preparedStatement.addBatch();
                         System.out.print("Want to Add more Data (Y/N) :");
                         String choise = sc.next();
                         sc.nextLine();
@@ -44,7 +47,7 @@ public class Practice1 {
                 }
             }
             // storing operation
-            int[] batch = statement.executeBatch();
+            int[] batch = preparedStatement.executeBatch();
             // Validation checks condition ..
             for (int i=0;i< batch.length;i++){
                 if (batch[i]==0){
@@ -54,7 +57,8 @@ public class Practice1 {
 
             // Retrieve Data from the database.
             String query2 = "SELECT * FROM users";
-            ResultSet resultSet = statement.executeQuery(query2);
+            PreparedStatement preparedStatement1 = connection.prepareStatement(query2);
+            ResultSet resultSet = preparedStatement1.executeQuery();
             while (resultSet.next()){
                 System.out.println("Name :"+resultSet.getString("name"));
                 System.out.println("Subject :"+resultSet.getString("subject"));
