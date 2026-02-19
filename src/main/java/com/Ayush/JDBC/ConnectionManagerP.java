@@ -11,10 +11,11 @@ private static final HikariDataSource dataSource;
 
 static {
     HikariConfig config = new HikariConfig();
-    config.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/?");
+    config.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/hikari");
     config.setUsername("root");
     config.setPassword("Java@80100");
-    config.setMaximumPoolSize(10);
+    config.setMaximumPoolSize(2);
+    config.setConnectionTimeout(3000);
 
     dataSource = new HikariDataSource(config);
 }
