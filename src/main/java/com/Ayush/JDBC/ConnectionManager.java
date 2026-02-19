@@ -10,7 +10,7 @@ public class ConnectionManager {
    private static final HikariDataSource datasource;
    static {
        HikariConfig config = new HikariConfig();
-       config.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/port1");
+       config.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/hikari");
        config.setUsername("root");
        config.setPassword("Java@80100");
        config.setMaximumPoolSize(10);
