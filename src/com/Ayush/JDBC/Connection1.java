@@ -26,12 +26,18 @@ public class Connection1 {
 
             //printing databases data using ResultSet interfaces.
             ResultSet resultSet = INstatement.executeQuery("SELECT * FROM users");
-            System.out.println("    ID    " + "   Name    " + "     Surname     " + "     City    ");
+            System.out.printf("%-5s %-15s %-15s %-15s%n",
+                    "ID", "Name", "Surname", "City");
+
+            System.out.println("------------------------------------------------------------");
+
             while (resultSet.next()) {
 
-                System.out.println("    " + resultSet.getInt("id") + "       " + resultSet.getString("name") + "         " +
-                        resultSet.getString("surname") + "        " + resultSet.getString("city"));
-
+                System.out.printf("%-5d %-15s %-15s %-15s%n",
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("surname"),
+                        resultSet.getString("city"));
             }
             connection.close();
             INstatement.close();
