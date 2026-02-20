@@ -1,24 +1,42 @@
 package com.Ayush.Patterns;
 
 public class SingletonDemo {
-    private static  SingletonDemo instance;
+    private  static volatile   SingletonDemo instance;
 
     private SingletonDemo(){
         System.out.println("Singleton Pattern");
     }
-    public static SingletonDemo getInstance(){
+    public static SingletonDemo getInstance() {
         if (instance==null){
-            instance = new SingletonDemo();
+            synchronized (SingletonDemo.class){
+                if (instance==null){
+                    instance = new SingletonDemo();
+                }
+            }
         }
         return instance;
     }
+    public void display(){
+        System.out.println("This Is Thread Safe !!");
+    }
+
 
     public static void main(String[] args) {
-        SingletonDemo s1 = SingletonDemo.getInstance();
-        SingletonDemo s2 = SingletonDemo.getInstance();
-        SingletonDemo s3 = SingletonDemo.getInstance();
+        Runnable task = ()->{
+          SingletonDemo.getInstance().display();
+        };
 
-        System.out.println((s1==s2)==(s2==s3));
+        Thread t1 = new Thread(task);
+        Thread t2 = new Thread(task);
+        Thread t3 = new Thread(task);
+        Thread t4 = new Thread(task);
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
+
+
+
 
     }
 }
