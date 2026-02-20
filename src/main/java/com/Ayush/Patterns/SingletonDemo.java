@@ -4,7 +4,9 @@ public class SingletonDemo {
     private  static volatile   SingletonDemo instance;
 
     private SingletonDemo(){
-        System.out.println("Singleton Pattern");
+        if (instance!=null){
+            throw new IllegalArgumentException("Object is Already exists !! ");
+        }
     }
     public static SingletonDemo getInstance() {
         if (instance==null){
