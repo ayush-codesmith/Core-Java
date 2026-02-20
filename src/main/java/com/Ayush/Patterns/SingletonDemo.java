@@ -1,10 +1,12 @@
 package com.Ayush.Patterns;
 
-public class SingletonDemo {
+import java.io.Serializable;
+
+public class SingletonDemo implements Serializable {
     private  static volatile   SingletonDemo instance;
 
     private SingletonDemo(){
-        if (instance!=null){
+        if (instance!=null){//Handling Refection Attack.
             throw new IllegalArgumentException("Object is Already exists !! ");
         }
     }
@@ -22,6 +24,9 @@ public class SingletonDemo {
         System.out.println("This Is Thread Safe !!");
     }
 
+   protected Object readResolve(){
+        return getInstance();
+    }
 
     public static void main(String[] args) {
         Runnable task = ()->{
