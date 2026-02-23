@@ -1,8 +1,10 @@
 package com.Ayush.Patterns;
 
+import net.bytebuddy.implementation.bind.annotation.Super;
+
 import java.io.Serializable;
 
-public class SingletonDemo implements Serializable {
+public class SingletonDemo implements Serializable,Cloneable {
     private  static volatile   SingletonDemo instance;
 
     private SingletonDemo(){
@@ -26,6 +28,11 @@ public class SingletonDemo implements Serializable {
 
    protected Object readResolve(){
         return getInstance();
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        throw new CloneNotSupportedException("Singleton instances cannot clone");
     }
 
     public static void main(String[] args) {
