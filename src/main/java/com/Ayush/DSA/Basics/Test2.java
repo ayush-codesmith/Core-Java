@@ -8,8 +8,19 @@ public class Test2 {
             System.out.println(n+" * "+i+" = "+(n*i));
         }
     }
+
+    //Given a positive integer n, find the sum of the first n natural numbers.
+    public static int naturalN(int n){
+        // logic if n =3 so 1+2+3=6
+        int sum = 0 ;
+        for (int i=1;i<=n;i++){
+            sum+=i;
+        }
+        return sum;
+    }
     public static void main(String[] args) {
-        table(2);
+        //table(2);
+        System.out.println(naturalN(3)); // so the lop run on n we don't have fix Iteration O(n) // 6
 
     }
 }
