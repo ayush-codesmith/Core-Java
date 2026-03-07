@@ -11,7 +11,24 @@ public class Test8 {
         }
        return false;
     }
+
+    public static boolean Optimize(int x, int y){
+        if (y==1){
+            return true;
+        }
+        if (x==1)
+            return y==1;
+
+        while (y>1){
+            if (y%x!=0){
+                return false;
+            }
+            y/=x;
+        }
+        return true;
+    }
     public static void main(String[] args) {
-        System.out.println(checkP(10,3));
+        //System.out.println(checkP(3,10));
+        System.out.println(Optimize(3,10));
     }
 }
